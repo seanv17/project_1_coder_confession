@@ -1,28 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <title>Coder Confession</Coder></title>
+    <title>Coder Confession</title>
 
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='styles/styles.css'>
 
     <!-- VENDOR SCRIPTS -->
-    <script src="vendor/jQuery/dist/jquery.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendor/handlebars/handlebars.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="scripts/app.js"></script>
+    <script src='scripts/app.js'></script>
+
   </head>
   <body>
-    <div class="jumbotron">
-      <div class="container">
-      Placeholder text for eventual handlebars to handle incoming collection of confessions
+
+    <!-- confessions! -->
+    <div class='jumbotron'>
+      <div class='container'>
+        <div id='confessions'>
+        <!--  <script id='confession-template' type='text/x-handlebars-template'>-->
+            <!-- one confession -->
+            <div class='row confession'>
+              <div class='col-md-10 col-md-offset-1'>
+                <div class='panel panel-default'>
+                  <div class='panel-body'>
+                    <div class='row'>
+                      <div class='col-md-9 col-xs-12'>
+                        Anonymous20DJ9W: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget feugiat justo, eu euismod turpis. Integer tortor massa, feugiat eu arcu in, suscipit nullam.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <!--  </script>-->
+        </div>
       </div>
     </div>
+      <section class='container'>
+
+        <!-- Form Name -->
+        <legend>Add Anonymous Confession</legend>
+
+          <div class='row'>
+            <div class='col-md-5 col-md-offset-2'>
+              <h3>Alias</h3>
+            </div>
+            <div class='col-md-5'>
+              <h3>Email</h3>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-5 col-md-offset-2'>
+              <!-- Text input-->
+             <div class='form-group'>
+                <div class='col-md-9'>
+                 <input id='alias' name='name' type='text' placeholder='Stay anonymous' class='form-control input-md'>
+                </div>
+             </div>
+            </div>
+
+              <div class='col-md-5'>
+              <!-- Text input-->
+              <div class='form-group'>
+                <div class='col-md-9'>
+                  <input id='email' name='name' type='text' placeholder='Get your confession emailed to you in 1 year' class='form-control input-md'>
+                </div>
+              </div>
+
+              </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-5 col-md-offset-5'>
+              <h3>Confession</h3>
+            </div>
+
+            <div class='col-md-5 col-md-offset-3'>
+            <!-- Text input-->
+            <div class='form-group'>
+              <div class='col-lg-12'>
+                <input id='confession' name='name' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
+            </div>
+
+          </div>
+      </section>
   </body>
 </html>

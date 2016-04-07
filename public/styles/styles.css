@@ -1,0 +1,12 @@
+.jumbotron .container {
+  height: 350px;
+}
+
+#confession {
+  height: 100px;
+}
+
+#saveSong {
+  width: 430px;
+  margin-left: auto;
+}
