@@ -16,6 +16,20 @@ $.ajax({
   error: getAliasesError
 });
 
+  $('#confession-form').on('submit', function(e) {
+    e.preventDefault();
+    console.log('form check');
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.ajax({
+      method: 'POST',
+      url: '/api/aliases',
+      data: formData,
+      success: newAliasSuccess,
+      error: newAliasError
+    });
+  });
+
 // End of document ready
 });
 
@@ -30,11 +44,23 @@ $.ajax({
 
 function getAliasesSuccess(json){
   json.forEach(function(alias){
+  console.log("sanity check for app.js");
   renderAlias(alias);
   });
 }
 
 function getAliasesError(json){
   console.log('uh ohhhhhhh');
-      $('#confession-template').append('Failed to load albums, is the server working?');
+      $('#confession-template').append('Failed to load aliases, is the server working?');
     }
+
+
+function newAliasSuccess(alias){
+  console.log('alias after POST', alias);
+  renderAlias(alias.name);
+/*  $(this).trigger('reset');*/
+}
+
+function newAliasError(alias){
+  console.log('awww-mann something went wrong!');
+}

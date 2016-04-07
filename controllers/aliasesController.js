@@ -12,8 +12,23 @@ function index(req, res) {
   });
 }
 
+// POST /api/aliases
 function create(req, res) {
-  // FILL ME IN !
+  console.log('what is my input?', req.body);
+    var newAlias = new db.Alias({
+      name: req.body.name,
+      emailAddress: req.body.emailAddress,
+    });
+
+  // save newAlias to the database
+  console.log('this is the new alias', newAlias);
+  newAlias.save(function(err, alias) {
+    if (err) {return console.log('save error:' + err);}
+    console.log('save ', alias.name);
+
+  // send back the alias created
+  res.json(alias);
+  });
 }
 
 function show(req, res) {

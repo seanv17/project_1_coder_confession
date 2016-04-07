@@ -31,7 +31,7 @@
                 <div class='col-md-10 col-md-offset-1'>
                   <ul>
                     <li class="list-group-item">
-                        <span class='alias-name'>{{name}}:</span>
+                        <span class='alias-name'>{{name}}: </span>
                     </li>
                   </ul>
                 </div>
@@ -42,50 +42,61 @@
       </div>
     </div>
 
-      <section class='container'>
-
-        <!-- Form Name -->
-        <legend>Add Anonymous Confession</legend>
-
-          <div class='row'>
-            <div class='col-md-6'>
-              <h3>Alias</h3>
-              <!-- Text input-->
-                <div class='form-group'>
-                   <div class='col-md-9'>
-                     <input id='alias' name='name' type='text' placeholder='Stay anonymous' class='form-control input-md'>
-                   </div>
+    <section class='container'>
+      <form class='form-horizontal' id='confession-form'>
+        <section class='container'>
+          <!-- Form Name -->
+          <legend>Add Anonymous Confession</legend>
+            <fieldset>
+              <div class='row'>
+                <div class='col-md-6'>
+                  <h3>Alias</h3>
+                  <!-- Text input-->
+                    <div class='form-group'>
+                     <div class='col-md-9'>
+                       <input id='alias' name='name' type='text' placeholder='Stay anonymous' class='form-control input-md'>
+                     </div>
+                    </div>
                 </div>
-              </div>
 
 
-            <div class='col-md-6'>
-              <h3>Email</h3>
-              <!-- Text input-->
-                <div class='form-group'>
-                  <div class='col-md-12'>
-                    <input id='email' name='name' type='text' placeholder='Get your confession emailed to you in 1 year' class='form-control input-md'>
+                <div class='col-md-6'>
+                  <h3>Email</h3>
+                  <!-- Text input-->
+                    <div class='form-group'>
+                      <div class='col-md-12'>
+                        <input id='email' name='emailAddress' type='text' placeholder='Get your confession emailed to you in 1 year' class='form-control input-md'>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+            <div class='row'>
+              <div class='col-md-5 col-md-offset-5'>
+                <h3>Confession</h3>
+              </div>
+
+              <div class='col-md-5 col-md-offset-3'>
+              <!-- Text input-->
+              <div class='form-group'>
+                <div class='col-lg-12'>
+                  <input id='confession' name='confession' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+            <div class="form-group">
+              <!--<label class="col-md-4 control-label" for="singlebutton">Save Confession</label>-->
+              <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit Confession</button>
               </div>
             </div>
-
-          <div class='row'>
-            <div class='col-md-5 col-md-offset-5'>
-              <h3>Confession</h3>
+            </div>
             </div>
 
-            <div class='col-md-5 col-md-offset-3'>
-            <!-- Text input-->
-            <div class='form-group'>
-              <div class='col-lg-12'>
-                <input id='confession' name='name' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary" id="saveConfession">Save changes</button>
-            </div>
-
-          </div>
-      </section>
+            </fieldset>
+        </section>
+      </form>
+    </section>
   </body>
 </html>
