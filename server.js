@@ -5,8 +5,8 @@ var express = require('express');
 var app = express();
 
 // bodyParser require
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+/*var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));*/
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
@@ -27,16 +27,22 @@ var db = require('./models');
  * HTML Endpoints
  */
 
+//localhost:300
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/admin', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/admin.html');
+});
 
 /*
  * JSON API Endpoints
  */
 
+ app.get('/api', controllers.api.index);
 
+ app.get('/api/aliases', controllers.aliases.index);
 
 /**********
  * SERVER *

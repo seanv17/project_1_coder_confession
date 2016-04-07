@@ -1,3 +1,3 @@
 module.exports.api = require('./apiController');
-module.exports.albums = require('./aliasesController');
-module.exports.albums = require('./confessionsController');
+module.exports.aliases = require('./aliasesController');
+/*module.exports.aliases = require('./confessionsController');*/

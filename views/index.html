@@ -20,63 +20,55 @@
   </head>
   <body>
 
-    <!-- confessions! -->
+    <!-- confessions!-->
     <div class='jumbotron'>
       <div class='container'>
         <div id='confessions'>
-        <!--  <script id='confession-template' type='text/x-handlebars-template'>-->
-            <!-- one confession -->
+          <script id='confession-template' type='text/x-handlebars-template'>
+            <!-- one confession-->
             <div class='row confession'>
-              <div class='col-md-10 col-md-offset-1'>
-                <div class='panel panel-default'>
-                  <div class='panel-body'>
-                    <div class='row'>
-                      <div class='col-md-9 col-xs-12'>
-                        Anonymous20DJ9W: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget feugiat justo, eu euismod turpis. Integer tortor massa, feugiat eu arcu in, suscipit nullam.
-                      </div>
-                    </div>
-                  </div>
+              <div class='row'>
+                <div class='col-md-10 col-md-offset-1'>
+                  <ul>
+                    <li class="list-group-item">
+                        <span class='alias-name'>{{name}}:</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-        <!--  </script>-->
+          </script>
         </div>
       </div>
     </div>
+
       <section class='container'>
 
         <!-- Form Name -->
         <legend>Add Anonymous Confession</legend>
 
           <div class='row'>
-            <div class='col-md-5 col-md-offset-2'>
+            <div class='col-md-6'>
               <h3>Alias</h3>
-            </div>
-            <div class='col-md-5'>
+              <!-- Text input-->
+                <div class='form-group'>
+                   <div class='col-md-9'>
+                     <input id='alias' name='name' type='text' placeholder='Stay anonymous' class='form-control input-md'>
+                   </div>
+                </div>
+              </div>
+
+
+            <div class='col-md-6'>
               <h3>Email</h3>
-            </div>
-          </div>
-
-          <div class='row'>
-            <div class='col-md-5 col-md-offset-2'>
               <!-- Text input-->
-             <div class='form-group'>
-                <div class='col-md-9'>
-                 <input id='alias' name='name' type='text' placeholder='Stay anonymous' class='form-control input-md'>
-                </div>
-             </div>
-            </div>
-
-              <div class='col-md-5'>
-              <!-- Text input-->
-              <div class='form-group'>
-                <div class='col-md-9'>
-                  <input id='email' name='name' type='text' placeholder='Get your confession emailed to you in 1 year' class='form-control input-md'>
+                <div class='form-group'>
+                  <div class='col-md-12'>
+                    <input id='email' name='name' type='text' placeholder='Get your confession emailed to you in 1 year' class='form-control input-md'>
+                  </div>
                 </div>
               </div>
-
-              </div>
-          </div>
+            </div>
 
           <div class='row'>
             <div class='col-md-5 col-md-offset-5'>
@@ -90,7 +82,7 @@
                 <input id='confession' name='name' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
               </div>
             </div>
-            <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
+            <button type="button" class="btn btn-primary" id="saveConfession">Save changes</button>
             </div>
 
           </div>

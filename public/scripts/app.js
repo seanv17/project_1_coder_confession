@@ -6,50 +6,35 @@
  */
 
 
-/* hard-coded data! */
-var sampleAlbums = [
-  {
-     artistName: 'Ladyhawke',
-     name: 'Ladyhawke',
-     releaseDate: '2008, November 18',
-     genres: [ 'new wave', 'indie rock', 'synth pop' ]
-  },
-  {
-     artistName: 'The Knife',
-     name: 'Silent Shout',
-     releaseDate: '2006, February 17',
-     genres: [ 'synth pop', 'electronica', 'experimental' ]
-   },
-   {
-     artistName: 'Juno Reactor',
-     name: 'Shango',
-     releaseDate: '2000, October 9',
-     genres: [ 'electronic', 'goa trance', 'tribal house' ]
-   },
-   {
-     artistName: 'Philip Wesley',
-     name: 'Dark Night of the Soul',
-     releaseDate: '2008, September 12',
-     genres: [ 'piano' ]
-   }
-];
-/* end of hard-coded data */
-
-
-
-
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+$.ajax({
+  method: 'GET',
+  url: 'api/aliases',
+  success: getAliasesSuccess,
+  error: getAliasesError
 });
 
-
-
-
-
-// this function takes a single album and renders it to the page
-/*function renderAlbum(album) {
-  console.log('rendering album:', album);
-
-}*/
-
 // End of document ready
+});
+
+// this function takes a single alias and renders it to the page
+  function renderAlias(alias) {
+    console.log('rendering alias:', alias);
+    var aliasHtml = $('#confession-template').html();
+    var aliasTemplate = Handlebars.compile(aliasHtml);
+    var html = aliasTemplate(alias);
+    $('#confessions').prepend(html);
+  }
+
+function getAliasesSuccess(json){
+  json.forEach(function(alias){
+  renderAlias(alias);
+  });
+}
+
+function getAliasesError(json){
+  console.log('uh ohhhhhhh');
+      $('#confession-template').append('Failed to load albums, is the server working?');
+    }

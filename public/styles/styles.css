@@ -1,12 +1,21 @@
+h3 {
+  margin-left: auto;
+}
+
 .jumbotron .container {
   height: 350px;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-left: auto;
 }
 
 #confession {
   height: 100px;
 }
 
-#saveSong {
+#saveConfession {
   width: 430px;
   margin-left: auto;
 }

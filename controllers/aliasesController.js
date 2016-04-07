@@ -1,6 +1,15 @@
-// GET /api/albums
+/************
+ * DATABASE *
+ ************/
+
+var db = require('../models');
+
+// GET /api/aliases
 function index(req, res) {
-  // FILL ME IN !
+  db.Alias.find({}, function(err, allAliases) {
+    if (err) { return console.log('does not compute' + err);}
+    res.json(allAliases);
+  });
 }
 
 function create(req, res) {
