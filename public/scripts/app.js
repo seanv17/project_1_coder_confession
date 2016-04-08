@@ -58,7 +58,7 @@ function getAliasesError(json){
 function newAliasSuccess(alias){
   console.log('alias after POST', alias);
   renderAlias(alias);
-/*  $(this).trigger('reset');*/
+  $("#confession-form")[0].reset();
 }
 
 function newAliasError(alias){

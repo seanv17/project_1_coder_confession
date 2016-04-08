@@ -4,22 +4,22 @@ var aliasList = [
             {
               name: 'anonymous2KD02J',
               emailAddress: 'john@john.com',
-              confession: 'I copy and paste from StackOverFlow.'
+              confession: ['I copy and paste from StackOverFlow.']
             },
             {
               name: 'anonymousDHOD82',
               emailAddress: 'sean@sean.com',
-              confession: 'I wish I could learn coding like Neo learns Kung-Fu.'
+              confession: ['I wish I could learn coding like Neo learns Kung-Fu.']
             },
             {
               name: 'anonymousF9J2OS',
               emailAddress: 'joe@joe.com',
-              confession: 'I rely on adapting other peoples code.'
+              confession: ['I rely on adapting other peoples code.']
             },
             {
               name: 'anonymousF302JS',
               emailAddress: 'missy@missy.com',
-              confession: 'I hate CSS.'
+              confession: ['I hate CSS.']
             }
           ];
 
