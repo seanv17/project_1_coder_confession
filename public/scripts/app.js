@@ -1,8 +1,12 @@
 /* CLIENT-SIDE JS
  */
 
+var $confessions;
+
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+  $confession = $('#confession');
 
 $.ajax({
   method: 'GET',
@@ -24,6 +28,14 @@ $.ajax({
       error: newAliasError
     });
   });
+
+  $confessions.on('click', '.deleteSong', function() {
+   $.ajax({
+     method: 'DELETE',
+     url: '/api/albums/'+$(this).data('albumid')+'/songs/'+$(this).data('songid'),
+     success: deleteSongSuccess
+   });
+ });
 
 // End of document ready
 });

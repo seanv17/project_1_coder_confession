@@ -32,8 +32,7 @@
                   <ul>
                     <li class="list-group-item">
                         <span class='alias-name'>{{name}}: {{#each confessions}}
-                          {{submission}}
-                          <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+                          {{submission}}<button class="deleteSubmission btn btn-danger" data-albumid={{../_id}} data-songid={{_id}}><b>x</b></button>
                         </span>
                         {{/each}}
                     </li>
