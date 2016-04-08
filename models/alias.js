@@ -1,13 +1,12 @@
 var mongoose = require("mongoose"),
     Schema = mongoose.Schema,
-    confessionSchema = new Schema({
-        submission: String
-      });
+    Confession = require('./confession.js');
+
 
 var AliasSchema = new Schema({
   name: String,
   emailAddress: String,
-  confession: [confessionSchema]
+  confessions: [Confession.schema]
 });
 
 var Alias = mongoose.model('Alias', AliasSchema);

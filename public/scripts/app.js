@@ -57,7 +57,7 @@ function getAliasesError(json){
 
 function newAliasSuccess(alias){
   console.log('alias after POST', alias);
-  renderAlias(alias.name);
+  renderAlias(alias);
 /*  $(this).trigger('reset');*/
 }
 
