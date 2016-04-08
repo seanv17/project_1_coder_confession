@@ -16,50 +16,47 @@ function index(req, res) {
 function create(req, res) {
   //console.log('what is my input?', req.body);
 
-  // set the value of the list id
+  // set the value of the new Alias
   var newAlias = {
     name: req.body.name,
     emailAddress: req.body.emailAddress
   };
 
   db.Alias.find(newAlias, function isFound(err, found) {
-    if(err) {return console.log("ERR: ", err);}
-    // if found is empty, this is new
-    if(found.length===0){
-      console.log("This is a new alias, creating a new db entry...");
+    if(err) {return console.log('ERR1: ', err);}
+    // if found is empty, this is new alias
+    if(found.length===0) {
+      console.log('This is a new alias, creating a new db entry...');
       db.Alias.create(newAlias, function newAliasCreated(err, createdAlias) {
-        if(err) {return console.log("ERR: ", err);}
-        console.log("Created new Alias");
+        if(err) {return console.log('ERR2: ', err);}
+        console.log('Created new Alias');
         createdAlias.confessions.push(new db.Confession({submission: req.body.confession }));
-        console.log("NEW CONFESSIONS: " , createdAlias.confessions);
-        createdAlias.save(function sendJson(err, finalAlias) {
-          if(err) {return console.log("ERR: ", err);}
-          console.log("SUCCESSFULLY ADDED CONFESSION AND SENDiNG WHOLE NEW ALIAS");
+        console.log('New Confessions: ', createdAlias.confessions);
+        createdAlias.save(function sendJSON(err, finalAlias) {
+          if(err) {return console.log('ERR3: ', err);}
+          console.log('Successfully added confession and sending whole new alias');
           res.json(finalAlias);
         });
       });
-    } // create else case
+    }
+    // if alias already exists, attach confession to existing alias
+    else if (found[0]._id) {
+      var newConfession = req.body.confession;
+      console.log('req.body.confession: ', newConfession);
+      db.Alias.create(newConfession, function newConfessionCreated(err, addedConfession) {
+        if(err) {return console.log("ERR2: ", err);}
+        console.log("Created new Alias: ", addedConfession);
+/*        addedConfession.confessions.push(new db.Confession({submission: req.body.confession }));
+        console.log('Added Confession: ', addedConfession);
+        addedConfession.save(function sendJSON(err, amendedAlias) {
+          if(err) {return console.log('ERR4: ', err);}
+          console.log('Successfully added confession and sending amended alias');
+          res.json(amendedAlias);
+        });*/
+      });
+    }
   });
 }
-// function create(req, res) {
-//   // console.log('what is my input?', req.body);
-//   //   var newAlias = new db.Alias({
-//   //     name: req.body.name,
-//   //     emailAddress: req.body.emailAddress,
-//   //   });
-//   //
-//   // // save newAlias to the database
-//   // console.log('this is the new alias', newAlias);
-//   // newAlias.save(function(err, alias) {
-//   //   if (err) {return console.log('save error:' + err);}
-//   //   console.log('save ', alias.name);
-//   //
-//   // // send back the alias created
-//   // res.json(alias);
-//   // });
-//
-//
-// }
 
 function show(req, res) {
   // FILL ME IN !
