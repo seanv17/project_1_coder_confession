@@ -23,7 +23,7 @@ function create(req, res) {
 
   db.Alias.find(newAlias, function isFound(err, found) {
     if (err) {return console.log('ERR1: ', err);}
-    // if found is empty, this is new alias
+    // if found is empty, create new alias with confession
     if(found.length===0) {
       console.log('This is a new alias, creating a new db entry...');
       db.Alias.create(newAlias, function newAliasCreated(err, createdAlias) {
