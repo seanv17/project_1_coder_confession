@@ -11,7 +11,6 @@ Link to project hosted on Heroku
 - Express
 - Mongoose
 - Body-parser
-- Confession
 
 <h2>Planned Features</h2>
 What changes would you make to your project if you continue working on it? (bullet points)

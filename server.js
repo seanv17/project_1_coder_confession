@@ -11,17 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 
-
 var controllers = require('./controllers');
 
 // require models to get access
 var db = require('./models');
-
-/**********
- * ROUTES *
- **********/
-
-
 
 /*
  * HTML Endpoints
@@ -44,7 +37,9 @@ app.get('/admin', function homepage (req, res) {
 
  app.get('/api/aliases', controllers.aliases.index);
 
- app.post('/api/aliases', controllers.aliases.create); 
+ app.post('/api/aliases', controllers.aliases.create);
+
+
 /**********
  * SERVER *
  **********/

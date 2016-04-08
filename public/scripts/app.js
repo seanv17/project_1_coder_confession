@@ -1,10 +1,5 @@
 /* CLIENT-SIDE JS
- *
- * You may edit this file as you see fit.  Try to separate different components
- * into functions and objects as needed.
- *
  */
-
 
 $(document).ready(function() {
   console.log('app.js loaded!');
@@ -53,7 +48,6 @@ function getAliasesError(json){
   console.log('uh ohhhhhhh');
       $('#confession-template').append('Failed to load aliases, is the server working?');
     }
-
 
 function newAliasSuccess(alias){
   console.log('alias after POST', alias);
