@@ -13,8 +13,8 @@ function index(req, res) {
 }
 
 // POST /api/aliases
+// app.post('/api/aliases', controllers.aliases.create);
 function create(req, res) {
-
   // set the value of the new Alias
   var newAlias = {
     name: req.body.name,
@@ -64,7 +64,13 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-  // FILL ME IN !
+// app.delete('/api/aliases/:aliasId/', controllers.alias.destroy);
+  console.log('alias to delete: ', req.params.aliasId);
+  var aliasId = req.params.aliasId;
+// find the index of the alias we want to delete
+    db.Alias.findOneAndRemove({ _id: aliasId }, function (err, deletedAlias) {
+    res.json(deletedAlias);
+    });
 }
 
 function update(req, res) {

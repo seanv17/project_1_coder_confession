@@ -40,6 +40,7 @@ app.get('/admin', function homepage (req, res) {
  app.post('/api/aliases', controllers.aliases.create);
 
  app.delete('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.destroy);
+ app.delete('/api/aliases/:aliasId/', controllers.aliases.destroy);
 
 /**********
  * SERVER *

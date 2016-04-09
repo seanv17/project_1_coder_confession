@@ -36,7 +36,16 @@ $.ajax({
      url: '/api/aliases/'+$(this).data('aliasid')+'/confessions/submission/'+$(this).data('submissionid'),
      success: deleteSubmissionSuccess
    });
- });
+  });
+
+  $confessions.on('click', '.deleteAlias', function() {
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/aliases/'+$(this).attr('data-id'),
+      success: deletedAliasSuccess,
+      error: deletedAliasError
+    });
+  });
 
 // End of document ready
 });
@@ -76,7 +85,7 @@ function newAliasError(alias){
 function deleteSubmissionSuccess (json) {
   var alias = json;
   var aliasId = alias._id;
-  // find the album with the correct ID and update it
+  // find the alias with the correct ID and update it
   for(var index = 0; index < allAliases.length; index++) {
     if(allAliases[index]._id === aliasId) {
       allAliases[index] = alias;
@@ -85,4 +94,28 @@ function deleteSubmissionSuccess (json) {
   }
   renderAlias();
   location.reload();
+}
+
+function deleteSubmissionError() {
+  console.log('delete submission error!');
+}
+
+function deletedAliasSuccess(json) {
+  var alias = json;
+  console.log(json);
+  var aliasId = alias._id;
+  console.log('delete alias', aliasId);
+  // find the alias with the correct ID and remove it from our allAliases array
+  for(var index = 0; index < allAliases.length; index++) {
+    if(allAliases[index]._id === aliasId) {
+      allAliases.splice(index, 1);
+      break;
+    }
+  }
+  renderAlias();
+  location.reload();
+}
+
+function deletedAliasError() {
+  console.log('delete alias error!');
 }
