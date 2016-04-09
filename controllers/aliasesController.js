@@ -5,7 +5,6 @@
 var db = require('../models');
 
 // GET /api/aliases
-// app.get('/api/aliases', controllers.aliases.index);
 function index(req, res) {
   db.Alias.find({}, function(err, allAliases) {
     if (err) { return console.log('does not compute' + err);}
@@ -14,7 +13,6 @@ function index(req, res) {
 }
 
 // POST /api/aliases
-// app.post('/api/aliases', controllers.aliases.create);
 function create(req, res) {
 
   // set the value of the new Alias
@@ -25,7 +23,7 @@ function create(req, res) {
 
   db.Alias.find(newAlias, function isFound(err, found) {
     if (err) {return console.log('ERR1: ', err);}
-    // if found is empty, this is new alias
+    // if found is empty, create new alias with confession
     if(found.length===0) {
       console.log('This is a new alias, creating a new db entry...');
       db.Alias.create(newAlias, function newAliasCreated(err, createdAlias) {
@@ -52,7 +50,7 @@ function create(req, res) {
         console.log('foundAlias: ', foundAlias);
         if (err) {return console.log('ERR4: ', err);}
         else {
-          foundAlias.confessions.push(new db.Confession({submission: req.body.confession.submission }));
+          foundAlias.confessions.push(new db.Confession({submission: req.body.confession }));
           foundAlias.save();
           res.json(foundAlias);
         }

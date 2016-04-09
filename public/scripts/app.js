@@ -1,13 +1,13 @@
 /* CLIENT-SIDE JS
  */
 
-var $confessions;
 var allAliases = [];
+var $confessions;
 
 $(document).ready(function() {
   console.log('app.js loaded!');
 
-  $confessions = $('#confessions');
+  var $confessions = $('#confessions');
 
 $.ajax({
   method: 'GET',
@@ -66,16 +66,17 @@ function newAliasSuccess(alias){
   console.log('alias after POST', alias);
   renderAlias(alias);
   $("#confession-form")[0].reset();
+  location.reload();
 }
 
 function newAliasError(alias){
   console.log('awww-mann something went wrong!');
 }
 
-function deleteSubmissionSuccess(json) {
+function deleteSubmissionSuccess (json) {
   var alias = json;
   var aliasId = alias._id;
-  // find the alias with the correct ID and update it
+  // find the album with the correct ID and update it
   for(var index = 0; index < allAliases.length; index++) {
     if(allAliases[index]._id === aliasId) {
       allAliases[index] = alias;
@@ -83,4 +84,5 @@ function deleteSubmissionSuccess(json) {
     }
   }
   renderAlias();
+  location.reload();
 }
