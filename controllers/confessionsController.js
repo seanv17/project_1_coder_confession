@@ -4,6 +4,7 @@
 
 var db = require('../models');
 
+
 // GET /api/albums
 function index(req, res) {
   // FILL ME IN !
@@ -35,6 +36,8 @@ function destroy(req, res) {
    else {res.send(404);}
   });
 }
+
+
 
 function update(req, res) {
   // FILL ME IN !
