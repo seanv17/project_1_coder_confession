@@ -34,12 +34,10 @@ app.get('/admin', function homepage (req, res) {
  */
 
  app.get('/api', controllers.api.index);
-
  app.get('/api/aliases', controllers.aliases.index);
-
  app.post('/api/aliases', controllers.aliases.create);
 
- app.delete('/api/aliases/:alias_id/confessions/:confession_id/submission/:submission_id', controllers.confessions.destroy);
+ app.delete('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.destroy);
 
 /**********
  * SERVER *

@@ -2,11 +2,12 @@
  */
 
 var $confessions;
+var allAliases = [];
 
 $(document).ready(function() {
   console.log('app.js loaded!');
 
-  $confession = $('#confession');
+  $confessions = $('#confessions');
 
 $.ajax({
   method: 'GET',
@@ -29,11 +30,11 @@ $.ajax({
     });
   });
 
-  $confessions.on('click', '.deleteSong', function() {
+  $confessions.on('click', '.deleteSubmission', function() {
    $.ajax({
      method: 'DELETE',
-     url: '/api/albums/'+$(this).data('albumid')+'/songs/'+$(this).data('songid'),
-     success: deleteSongSuccess
+     url: '/api/aliases/'+$(this).data('aliasid')+'/confessions/submission/'+$(this).data('submissionid'),
+     success: deleteSubmissionSuccess
    });
  });
 
@@ -69,4 +70,17 @@ function newAliasSuccess(alias){
 
 function newAliasError(alias){
   console.log('awww-mann something went wrong!');
+}
+
+function deleteSubmissionSuccess(json) {
+  var alias = json;
+  var aliasId = alias._id;
+  // find the alias with the correct ID and update it
+  for(var index = 0; index < allAliases.length; index++) {
+    if(allAliases[index]._id === aliasId) {
+      allAliases[index] = alias;
+      break;  // we found our submission - no reason to keep searching (this is why we didn't use forEach)
+    }
+  }
+  renderAlias();
 }
