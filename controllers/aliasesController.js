@@ -5,6 +5,7 @@
 var db = require('../models');
 
 // GET /api/aliases
+// app.get('/api/aliases', controllers.aliases.index);
 function index(req, res) {
   db.Alias.find({}, function(err, allAliases) {
     if (err) { return console.log('does not compute' + err);}
@@ -13,6 +14,7 @@ function index(req, res) {
 }
 
 // POST /api/aliases
+// app.post('/api/aliases', controllers.aliases.create);
 function create(req, res) {
 
   // set the value of the new Alias
