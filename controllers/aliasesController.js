@@ -25,7 +25,7 @@ function create(req, res) {
 
   db.Alias.find(newAlias, function isFound(err, found) {
     if (err) {return console.log('ERR1: ', err);}
-    // if found is empty, create new alias with confession
+    // if found is empty, this is new alias
     if(found.length===0) {
       console.log('This is a new alias, creating a new db entry...');
       db.Alias.create(newAlias, function newAliasCreated(err, createdAlias) {
@@ -52,7 +52,7 @@ function create(req, res) {
         console.log('foundAlias: ', foundAlias);
         if (err) {return console.log('ERR4: ', err);}
         else {
-          foundAlias.confessions.push(new db.Confession({submission: req.body.confession }));
+          foundAlias.confessions.push(new db.Confession({submission: req.body.confession.submission }));
           foundAlias.save();
           res.json(foundAlias);
         }

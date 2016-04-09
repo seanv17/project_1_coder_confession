@@ -36,6 +36,10 @@
                         </span>
                         {{/each}}
                         <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+                          {{submission}}<button class='deleteSubmission btn btn-danger' data-aliasid={{../_id}} data-confessionid={{_id}} data-submissionid={{_id}}><b>x</b></button>
+                        </span>
+                        {{/each}}
+                      <button type='button' name='button' class='deleteBtn btn btn-danger pull-right' data-id={{_id}}>Delete</button>
                     </li>
                   </ul>
                 </div>

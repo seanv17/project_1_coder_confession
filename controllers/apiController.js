@@ -1,6 +1,6 @@
 function index(req, res) {
   res.json({
-    message: "Welcome to Coder Confession!",
+    message: "Welcome to Coder Confessions!",
     documentation_url: "https://github.com/seanvsville/project_1_coder_confession/blob/master/README.md",
     base_url: "http://tunely.herokuapp.com",
     endpoints: [
