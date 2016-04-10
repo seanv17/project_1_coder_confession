@@ -66,7 +66,7 @@ function show(req, res) {
   // FILL ME IN !
 }
 
-// Delete entire alias (alias, email, confession)
+// Delete entire alias (alias name, emailAddress, confession)
 // app.delete('/api/aliases/:aliasId/', controllers.alias.destroy);
 function destroy(req, res) {
   console.log('alias to delete: ', req.params.aliasId);
@@ -77,11 +77,8 @@ function destroy(req, res) {
     });
 }
 
-  // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
-
-
-
+  // FILL ME IN !
 }
 
 // export public methods here

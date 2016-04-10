@@ -21,8 +21,9 @@ function show(req, res) {
 // Delete a confession submission associated with an alias
 // app.delete('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.destroy);
 function destroy(req, res) {
+  var aliasId = req.params.aliasId;
   var submissionId = req.params.submissionId;
-  db.Alias.findById(req.params.aliasId, function(err, foundAlias) {
+  db.Alias.findById(aliasId, function(err, foundAlias) {
     console.log('foundAlias: ', foundAlias);
     var trashedSubmission = foundAlias.confessions.id(req.params.submissionId);
     console.log('trashedSubmission: ', trashedSubmission);
@@ -41,15 +42,24 @@ function destroy(req, res) {
   });
 }
 
-// Update submission
+// Update a submission within an alias
 // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
+  var aliasId = req.params.alias_id;
+  var submissionId = req.params.submission_id;
+  console.log('aliasId: ', aliasId);
+  console.log('submissionId: ', submissionId);
 
-
-
-
+  db.Alias.findById(aliasId, function(err, foundAlias) {
+    // Set foundAlias submission value to submitted submission value user
+    foundAlias.submission = req.body.submission;
+    // Save updated submission and set to 'savedAlias'
+    foundAlias.save(function(err, savedAlias) {
+      if (err) {return console.log('Save Error: ', err);} //saves the entire alis with the edited trip
+      res.json(savedAlias);
+    });
+  });
 }
-
 
 // export public methods here
 module.exports = {
