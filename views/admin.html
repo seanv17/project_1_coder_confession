@@ -27,18 +27,16 @@
           <script id='confession-template' type='text/x-handlebars-template'>
             <!-- one confession-->
             <div class='row confession'>
-              <div class='row'>
-                <div class='col-md-10 col-md-offset-1'>
-                  <ul>
-                    <li class="list-group-item">
-                        <span class='alias-name'>{{name}}: {{#each confessions}}
-                          {{submission}}<button class="deleteSubmission btn btn-danger" data-aliasid={{../_id}} data-submissionid={{_id}}><b>x</b></button>
-                        </span>
-                        {{/each}}
-                        <button type='button' name='button' class='deleteAlias btn btn-danger pull-right' data-id={{_id}}>Delete</button>
-                    </li>
-                  </ul>
-                </div>
+              <div class='col-md-10 col-md-offset-1'>
+                <ul>
+                  <li class="list-group-item">
+                      <span class='alias-name'>{{name}}: {{#each confessions}}
+                        {{submission}}<button class="deleteSubmission btn btn-danger" data-aliasid={{../_id}} data-submissionid={{_id}}><b>x</b></button>
+                      </span>
+                      {{/each}}
+                      <button type='button' name='button' class='deleteAlias btn btn-danger pull-right' data-id={{_id}}>Delete</button>
+                  </li>
+                </ul>
               </div>
             </div>
           </script>

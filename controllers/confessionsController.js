@@ -41,8 +41,13 @@ function destroy(req, res) {
   });
 }
 
+// Update submission
+// app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
-  // FILL ME IN !
+
+
+
+
 }
 
 

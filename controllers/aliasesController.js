@@ -26,11 +26,14 @@ function create(req, res) {
     // if found is empty, create new alias with confession
     if(found.length===0) {
       console.log('This is a new alias, creating a new db entry...');
+      // Create new alias in database with key: values from submitted forms (newAlias)
       db.Alias.create(newAlias, function newAliasCreated(err, createdAlias) {
         if (err) {return console.log('ERR2: ', err);}
         console.log('Created new Alias');
+        // push new alias and push new instance of sub.schema key:value pair for submission
         createdAlias.confessions.push(new db.Confession({submission: req.body.confession }));
         console.log('New Confessions: ', createdAlias.confessions);
+        // save new alias and set as finalAlias to be sent back to client side as JSON object
         createdAlias.save(function sendJSON(err, finalAlias) {
           if (err) {return console.log('ERR3: ', err);}
           console.log('Successfully added confession and sending whole new alias');
@@ -40,16 +43,16 @@ function create(req, res) {
     }
     // if found (alias) already exists, attach confession to existing alias
     else if (found[0]._id) {
+      // Set alias Id as a variable and set to foundAlias variable
       var aliasId = found[0]._id;
-      console.log('req.params.id: ', aliasId);
-      var newConfession = req.body.confession;
-      console.log('req.body.confession: ', newConfession);
+      console.log('aliasId: ', aliasId);
       db.Alias.findById(aliasId)
       .populate('confession')
       .exec(function (err, foundAlias) {
         console.log('foundAlias: ', foundAlias);
         if (err) {return console.log('ERR4: ', err);}
         else {
+          //Drill down into confessions of foundAlias and push new instance of sub.schema key:value pair for submission
           foundAlias.confessions.push(new db.Confession({submission: req.body.confession }));
           foundAlias.save();
           res.json(foundAlias);
@@ -63,8 +66,9 @@ function show(req, res) {
   // FILL ME IN !
 }
 
-function destroy(req, res) {
+// Delete entire alias (alias, email, confession)
 // app.delete('/api/aliases/:aliasId/', controllers.alias.destroy);
+function destroy(req, res) {
   console.log('alias to delete: ', req.params.aliasId);
   var aliasId = req.params.aliasId;
 // find the index of the alias we want to delete
@@ -73,8 +77,11 @@ function destroy(req, res) {
     });
 }
 
+  // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
-  // FILL ME IN !
+
+
+
 }
 
 // export public methods here
