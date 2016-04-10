@@ -20,21 +20,21 @@
   </head>
   <body>
 
-    <!-- confessions!-->
+    <!-- Start of rendered confessions -->
     <div class='jumbotron'>
       <div class='container'>
         <div id='confessions'>
           <script id='confession-template' type='text/x-handlebars-template'>
-            <!-- one confession-->
-            <div class='row confession'>
+            <!-- One confession -->
+            <div class='row-of-confession'>
               <div class='col-md-10'>
                 <ul>
-                  <li class="list-group-item">
-                      <span class='alias-name'><strong>{{name}}:</strong> {{#each confessions}}
-                        {{submission}}<button class="deleteSubmission btn btn-danger" data-aliasid={{../_id}} data-submissionid={{_id}}><b>x</b></button>
-                      </span>
+                  <li class='list-group-item'>
+                    <span class='alias-name'><strong>{{name}}:</strong> {{#each confessions}}
+                      {{submission}}<button class='deleteSubmission btn btn-danger' data-aliasid={{../_id}} data-submissionid={{_id}}><b>x</b></button>
+                    </span>
                       {{/each}}
-                      <button type='button' name='button' class='deleteAlias btn btn-danger pull-right' data-id={{_id}}>Delete</button>
+                    <button type='button' name='button' class='deleteAlias btn btn-danger pull-right' data-id={{_id}}>Delete</button>
                   </li>
                 </ul>
               </div>
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <!-- End of listed confessions -->
+    <!-- End of rendered confessions -->
 
     <!-- Star of Forms -->
     <section class='container'>
@@ -52,51 +52,51 @@
           <!-- Form Name -->
           <legend>Add Anonymous Confession</legend>
             <fieldset>
-              <div class='row alias-email-forms'>
+              <div class='row alias-email-forms'> <!-- Start of div row alias-email-forms class -->
                 <div class='col-md-6'>
                   <h3>Alias</h3>
-                  <!-- Alias text input-->
-                    <div class='alias-email-group'>
-                     <div class='col-md-9'>
-                       <input id='alias' name='name' type='text' placeholder='Stay anonymous (optional)' class='form-control input-md'>
-                     </div>
+                  <!-- Alias text input -->
+                  <div class='alias-email-group'>
+                   <div class='col-md-9'>
+                     <input id='alias' name='name' type='text' placeholder='Stay anonymous (optional)' class='form-control input-md'>
                     </div>
+                  </div>
                 </div>
 
                 <div class='col-md-6'>
                   <h3>Email</h3>
-                  <!-- Email text input-->
-                    <div class='alias-email-group'>
-                      <div class='col-md-12'>
-                        <input id='email' name='emailAddress' type='text' placeholder='Get your confession emailed to you in 1 year (optional)' class='form-control input-md'>
-                      </div>
+                  <!-- Email text input -->
+                  <div class='alias-email-group'>
+                    <div class='col-md-12'>
+                      <input id='email' name='emailAddress' type='text' placeholder='Get your confession emailed to you in 1 year (optional)' class='form-control input-md'>
                     </div>
                   </div>
-                </div> <!-- End of div row alias-email-forms-->
-
-            <div class='row confession'>
-              <div class='col-md-5 col-md-offset-5'>
-                <h3>Confession</h3>
-              </div>
-
-              <div class='col-md-5 col-md-offset-3'>
-              <!-- Confession text input-->
-              <div class='confession-form-group'>
-                <div class='col-lg-12'>
-                  <input id='confession' name='confession' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
                 </div>
-              </div>
+              </div> <!-- End of div row alias-email-forms class -->
 
-              <!-- Submit Button -->
-            <div class='submit-form-group'>
-              <div class='col-md-4'>
-                <button id='singlebutton' name='singlebutton' class='btn btn-primary'>Submit Confession</button>
-              </div>
-            </div>
-            </div>
-            </div>
+              <div class='row confession'> <!-- Start of row confession -->
+                <div class='col-md-5 col-md-offset-5'>
+                  <h3>Confession</h3>
+                </div>
 
+                <div class='col-md-5 col-md-offset-3'>
+                  <!-- Confession text input -->
+                  <div class='confession-form-group'>
+                    <div class='col-lg-12'>
+                      <input id='confession' name='confession' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
+                    </div>
+                  </div> <!-- End of confession text input -->
+
+                  <!-- Submit Button -->
+                  <div class='submit-form-group'>
+                    <div class='col-md-4'>
+                      <button id='singlebutton' name='singlebutton' class='btn btn-primary'>Submit Confession</button>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- End of row confession -->
             </fieldset>
+
         </section>
       </form>
     </section>
