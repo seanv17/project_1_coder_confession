@@ -46,9 +46,7 @@ function destroy(req, res) {
 // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
   var aliasId = req.params.alias_id;
-  var submissionId = req.params.submission_id;
   console.log('aliasId: ', aliasId);
-  console.log('submissionId: ', submissionId);
 
   db.Alias.findById(aliasId, function(err, foundAlias) {
     // Set foundAlias submission value to submitted submission value user

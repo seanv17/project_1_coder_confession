@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 
+// require controllers to get access
 var controllers = require('./controllers');
 
 // require models to get access
@@ -33,11 +34,13 @@ app.get('/admin', function homepage (req, res) {
  * JSON API Endpoints
  */
 
+ // Alias endpoints
  app.get('/api', controllers.api.index);
  app.get('/api/aliases', controllers.aliases.index);
  app.post('/api/aliases', controllers.aliases.create);
  app.delete('/api/aliases/:aliasId/', controllers.aliases.destroy);
 
+ // Confession endpoints
  app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
  app.delete('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.destroy);
 

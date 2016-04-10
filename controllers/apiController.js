@@ -6,9 +6,9 @@ function index(req, res) {
     endpoints: [
       {method: 'GET', path: '/api', description: 'Describes available endpoints'},
       {method: 'GET', path: '/api/aliases', description: 'Describes available aliases'},
-      {method: 'POST', path: '/api/aliases', description: 'Create new alias to aliases'},
+      {method: 'POST', path: '/api/aliases', description: 'Create new alias to aliases with confession details'},
+      {method: 'DELETE', path: '/api/aliases/:aliasId/', description: 'Deletes entire alias with associated confession'},
       {method: 'DELETE', path: '/api/aliases/:aliasId/confessions/submission/:submissionId', description: 'Delete a submission within an alias'},
-      {method: 'DELETE', path: '/api/aliases/:aliasId/', description: 'Deletes entire confession with alias details'},
       {method: 'PUT', path: '/api/aliases/:aliasId/confessions/submission/:submissionId', description: 'Updates a submission within an alias'},
     ]
   });
