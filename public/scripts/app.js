@@ -16,6 +16,7 @@ $.ajax({
   error: getAliasesError
 });
 
+  // Event listener for confession form submit
   $('#confession-form').on('submit', function(e) {
     e.preventDefault();
     console.log('form check');
@@ -30,6 +31,7 @@ $.ajax({
     });
   });
 
+  // Event listener to delete a single submission
   $confessions.on('click', '.deleteSubmission', function() {
    $.ajax({
      method: 'DELETE',
@@ -38,6 +40,7 @@ $.ajax({
    });
   });
 
+  // Event listener to delete entire confession (alias, email, confession)
   $confessions.on('click', '.deleteAlias', function() {
     $.ajax({
       method: 'DELETE',
@@ -46,6 +49,37 @@ $.ajax({
       error: deletedAliasError
     });
   });
+
+  // Edit songs modal trigger
+  $('#editSubmissionModal').on('click', 'button#editSubmissionModal', handleUpdateSubmissionSave);
+
+  function handleUpdateSubmissionSave(event) {
+  // build all the submission objects up
+  var $modal = $('#editSubmissionModal');
+  if($modal.find('form').length < 1) {
+    // if there are no form elements, then there are no submission to update
+    $modal.modal('hide');
+    return;
+  }
+  // snag the aliasId from the first form object on the modal
+  var aliasId = $modal.find('form').data('aliasid');
+
+  var updatedSongs = [];
+  $modal.find('form').each(function () {
+    // in here this is a form element
+    var aConfession = {};
+    aSubmission._id = $(this).attr('id');
+    aConfession.name = $(this).find('input.submission-name').val();
+    console.log('found updated data for song: ', aSong);
+    updatedSongs.push(aSong);
+  });
+  // at this point we should have an array of songs to PUT to the server
+  //   this is going to be a lot of requests and after all of them we have to update the page again
+  //   maybe we should display a spinner to let the user know the requests are processing ?
+  //   but let's just take the easy route - hide the modal and continue processing in the background
+  $modal.modal('hide');
+  updateMultipleSongs(albumId, updatedSongs);
+}
 
 // End of document ready
 });

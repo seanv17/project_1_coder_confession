@@ -45,17 +45,20 @@ function destroy(req, res) {
 // Update a submission within an alias
 // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
-  var aliasId = req.params.alias_id;
+  var aliasId = req.params.aliasId;
   console.log('aliasId: ', aliasId);
 
   db.Alias.findById(aliasId, function(err, foundAlias) {
+    var correctSubmission = foundAlias.confessions.id(req.params.submissionId);
+    if (correctSubmission) {
     // Set foundAlias submission value to submitted submission value user
     foundAlias.submission = req.body.submission;
     // Save updated submission and set to 'savedAlias'
     foundAlias.save(function(err, savedAlias) {
       if (err) {return console.log('Save Error: ', err);} //saves the entire alis with the edited trip
-      res.json(savedAlias);
+      res.json(correctSubmission);
     });
+    }
   });
 }
 
