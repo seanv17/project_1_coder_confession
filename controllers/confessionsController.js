@@ -21,10 +21,14 @@ function show(req, res) {
 // Delete a confession submission associated with an alias
 // app.delete('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.destroy);
 function destroy(req, res) {
+  var submissionId = req.params.submissionId;
   db.Alias.findById(req.params.aliasId, function(err, foundAlias) {
     console.log('foundAlias: ', foundAlias);
     var trashedSubmission = foundAlias.confessions.id(req.params.submissionId);
-    console.log('selectedSubmission: ', trashedSubmission);
+    console.log('trashedSubmission: ', trashedSubmission);
+/*    if (submissionId.length === 1) {
+      return;
+    }*/
     if (trashedSubmission) {
       trashedSubmission.remove();
       // save new alias with trashed submission
