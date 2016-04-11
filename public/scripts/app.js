@@ -89,9 +89,11 @@ function getAliasesError(json){
 
 // success function for creating a new alias (alias, email, confession)
 function newAliasSuccess(alias){
+  var aliasId = alias._id;
   console.log('alias after POST', alias);
+  $('div[data-aliasid=' + aliasId + ']').remove();
   renderAlias(alias);
-  $("#confession-form")[0].reset();
+/*  $("#confession-form")[0].reset();*/
 }
 
 function newAliasError(alias){
