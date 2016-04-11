@@ -32,7 +32,7 @@
                   <ul>
                     <li class='list-group-item' data-aliasid="{{../_id}}" data-id="{{_id}}">
                       <span class='alias-name'><strong>{{name}}:</strong> {{#each confessions}}
-                        {{submission}}<div class='form-group'><button class='deleteSubmission btn btn-danger' data-aliasid="{{../_id}}" data-submissionid="{{_id}}"><b>x</b></button></div><button class='btn btn-info edit-submission'>Edit</button>
+                        {{submission}}<div class='form-group'><button class='deleteSubmission btn btn-danger' data-aliasid="{{../_id}}" data-submissionid="{{_id}}"><b>x</b></button></div><button class='btn btn-info edit-submission' data-aliasid="{{../_id}}" data-submissionid="{{_id}}">Edit</button>
                       </span>
                         {{/each}}
                       <button type='button' name='button' class='deleteAlias btn btn-danger puxll-right' data-id={{_id}} data-aliasid="{{../_id}}">Delete</button>

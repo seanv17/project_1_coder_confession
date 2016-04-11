@@ -56,6 +56,13 @@ $.ajax({
     });
   });
 
+  // Event listener to edit submission
+  $('#confession-form').on('click', '.edit-submision', function() {
+    var editSubmissionId = $(this).data('submissionid');
+    $('#confession-form input').val('');
+    $('#confession-form text-area').val('');
+  }
+
 // End of document ready
 });
 
