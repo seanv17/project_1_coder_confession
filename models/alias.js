@@ -8,5 +8,6 @@ var AliasSchema = new Schema({
   confessions: [Confession.schema]
 });
 
+
 var Alias = mongoose.model('Alias', AliasSchema);
 module.exports = Alias;

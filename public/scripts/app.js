@@ -8,6 +8,7 @@ $(document).ready(function() {
   console.log('app.js loaded!');
 
   var $confessions = $('#confessions');
+  var $confessionform = $('#confession-form');
 
 $.ajax({
   method: 'GET',
@@ -31,11 +32,15 @@ $.ajax({
     });
   });
 
-  // Event listener to delete a single submission
-  $confessions.on('click', '.deleteSubmission', function() {
+  // Event listener for deleting a submission
+  $confessions.on('click', '.row-of-confession', function() {
+    var submissionId = $(this).data('submission-id');
+    var aliasId = $(this).closest('form').data('alias-id');
+    console.log('submissionId: ', submissionId);
+    console.log('aliasId: ', aliasId);
    $.ajax({
      method: 'DELETE',
-     url: '/api/aliases/'+$(this).data('aliasid')+'/confessions/submission/'+$(this).data('submissionid'),
+     url: '/api/aliases/'+ aliasId + '/confessions/submission/'+ submissionId,
      success: deleteSubmissionSuccess
    });
   });
@@ -50,36 +55,31 @@ $.ajax({
     });
   });
 
-  // Edit songs modal trigger
-  $('#editSubmissionModal').on('click', 'button#editSubmissionModal', handleUpdateSubmissionSave);
+//Event listener to edit a submission
+/*  $confessionform.on('click', 'edit-submission', function () {
+    $('#confession-form input').val('');
+    $('#confession-form textarea').val('');
+    var editSubmissionId = $(this).data('submissionId');
+    console.log('editSubmissionId: ', editSubmissionId);
 
-  function handleUpdateSubmissionSave(event) {
-  // build all the submission objects up
-  var $modal = $('#editSubmissionModal');
-  if($modal.find('form').length < 1) {
-    // if there are no form elements, then there are no submission to update
-    $modal.modal('hide');
-    return;
-  }
-  // snag the aliasId from the first form object on the modal
-  var aliasId = $modal.find('form').data('aliasid');
+    $('#editSubmissionModal').attr('data-aliasId', editSubmissionId);
+    $('#editSubmissionModal').modal('show');
 
-  var updatedSongs = [];
-  $modal.find('form').each(function () {
-    // in here this is a form element
-    var aConfession = {};
-    aSubmission._id = $(this).attr('id');
-    aConfession.name = $(this).find('input.submission-name').val();
-    console.log('found updated data for song: ', aSong);
-    updatedSongs.push(aSong);
-  });
-  // at this point we should have an array of songs to PUT to the server
-  //   this is going to be a lot of requests and after all of them we have to update the page again
-  //   maybe we should display a spinner to let the user know the requests are processing ?
-  //   but let's just take the easy route - hide the modal and continue processing in the background
-  $modal.modal('hide');
-  updateMultipleSongs(albumId, updatedSongs);
-}
+      $('#editSubmissionModalSubmit').on('click', function(e) {
+        e.preventDefault();
+        $(this).off('click');
+        console.log('editSubmissionId: ', editSubmissionId);
+        $('#editSubmissionModal').modal('hide');
+        var modalData = $('#confession-form').serialize();
+        console.log('modalData: ', modalData);
+
+          $.ajax({
+            method: 'PUT',
+            url: '/api/aliases/' + aliasId + 'confessions/submission/' +
+          })
+      });
+  });*/
+
 
 // End of document ready
 });
@@ -116,18 +116,14 @@ function newAliasError(alias){
   console.log('awww-mann something went wrong!');
 }
 
-function deleteSubmissionSuccess (json) {
-  var alias = json;
-  var aliasId = alias._id;
-  // find the alias with the correct ID and update it
-  for(var index = 0; index < allAliases.length; index++) {
-    if(allAliases[index]._id === aliasId) {
-      allAliases[index] = alias;
-      break;  // we found our submission - no reason to keep searching (this is why we didn't use forEach)
-    }
-  }
-  renderAlias();
-  location.reload();
+function deleteSubmissionSuccess (data) {
+  var submissionId = data._id;
+  var $formRow = $('span#' + submissionId);
+  // since aliasId isn't passed to this function, we'll deduce it from the page
+  var aliasId = $formRow.data('alias-id');
+  // remove that alias edit form from the page
+  $formRow.remove();
+  fetchandReRenderAliasWithId(aliasId);
 }
 
 function deleteSubmissionError() {
@@ -152,4 +148,13 @@ function deletedAliasSuccess(json) {
 
 function deletedAliasError() {
   console.log('delete alias error!');
+}
+
+function fetchandReRenderAliasWithId(aliasId) {
+  $.get('/api/aliases/' + aliasId, function(data) {
+    // remove the current instance of the alias from the page
+    $('button[data-alias-id=' + aliasId + ']').remove();
+    // re-render it with the new alias data (including submissions)
+    renderAlias(data);
+  });
 }
