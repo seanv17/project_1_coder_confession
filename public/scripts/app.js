@@ -94,6 +94,12 @@ $.ajax({
     $('#confessions').prepend(html);
   }
 
+  function reRender() {
+    $aliasList.empty();
+    var html = template({ aliases: allAliases });
+    $aliasList.append(html);
+}
+
 // this function gets all the aliases on doc ready and displays them
 function getAliasesSuccess(json){
   json.forEach(function(alias){
@@ -148,7 +154,7 @@ function deletedAliasSuccess(json) {
       break;
     }
   }
-  $('div[data-aliasid=' + aliasId + ']').remove();
+$('li[data-id=' + aliasId + ']').remove();
 }
 
 function deletedAliasError() {

@@ -76,7 +76,7 @@ function destroy(req, res) {
     console.log('deletedAlias: ', deletedAlias);
     res.json(deletedAlias);
     });
-}
+  }
 
 function update(req, res) {
   // FILL ME IN !
