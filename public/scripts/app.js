@@ -91,7 +91,7 @@ function getAliasesError(json){
 function newAliasSuccess(alias){
   var aliasId = alias._id;
   console.log('alias after POST', alias);
-  $('div[data-aliasid=' + aliasId + ']').remove();
+  $('li[data-aliasid=' + aliasId + ']').remove();
   renderAlias(alias);
   $("#confession-form")[0].reset();
 }
