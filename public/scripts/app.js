@@ -68,7 +68,7 @@ $.ajax({
     // when edit button is pressed.
     // converts a submission text to an input field
     $('.individualSubmission')
-      .html('<input class="edit-submission-text" value="' + $('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success puxll-right">Save</button>')
+      .html('<input class="edit-submission-text" value="' + $('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success puxll-right">Save</button>');
 
     $('.btn-success').on('click', function() {
       console.log(aliasId);
@@ -79,7 +79,7 @@ $.ajax({
         aliasId : aliasId,
         submissionId : submissionId,
         newText :  capturedNewText
-      }
+      };
 
       // console.log(updateData);
       $.ajax({
@@ -117,12 +117,6 @@ function handleUpdateError(json) {
     $('#confessions').prepend(html);
   }
 
-  function reRender() {
-    $aliasList.empty();
-    var html = template({ aliases: allAliases });
-    $aliasList.append(html);
-}
-
 // this function gets all the aliases on doc ready and displays them
 function getAliasesSuccess(json){
   json.forEach(function(alias){
@@ -150,7 +144,7 @@ function newAliasError(alias){
 }
 
 // success function for deleting a submission within an alias
-function bmissionSuccess (data) {
+function deletesubmissionSuccess (data) {
   var alias = json;
   var aliasId = alias._id;
 
@@ -183,13 +177,4 @@ $('li[data-id=' + aliasId + ']').remove();
 
 function deletedAliasError() {
   console.log('delete alias error!');
-}
-
-function fetchandReRenderAliasWithId(aliasId) {
-  $.get('/api/aliases/' + aliasId, function(data) {
-    // remove the current instance of the alias from the page
-    $('button[data-alias-id=' + aliasId + ']').remove();
-    // re-render it with the new alias data (including submissions)
-    renderAlias(data);
-  });
 }
