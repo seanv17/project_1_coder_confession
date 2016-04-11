@@ -56,32 +56,6 @@ $.ajax({
     });
   });
 
-//Event listener to edit a submission
-/*  $confessionform.on('click', 'edit-submission', function () {
-    $('#confession-form input').val('');
-    $('#confession-form textarea').val('');
-    var editSubmissionId = $(this).data('submissionId');
-    console.log('editSubmissionId: ', editSubmissionId);
-
-    $('#editSubmissionModal').attr('data-aliasId', editSubmissionId);
-    $('#editSubmissionModal').modal('show');
-
-      $('#editSubmissionModalSubmit').on('click', function(e) {
-        e.preventDefault();
-        $(this).off('click');
-        console.log('editSubmissionId: ', editSubmissionId);
-        $('#editSubmissionModal').modal('hide');
-        var modalData = $('#confession-form').serialize();
-        console.log('modalData: ', modalData);
-
-          $.ajax({
-            method: 'PUT',
-            url: '/api/aliases/' + aliasId + 'confessions/submission/' +
-          })
-      });
-  });*/
-
-
 // End of document ready
 });
 
@@ -118,7 +92,6 @@ function newAliasSuccess(alias){
   console.log('alias after POST', alias);
   renderAlias(alias);
   $("#confession-form")[0].reset();
-  location.reload();
 }
 
 function newAliasError(alias){
