@@ -35,7 +35,7 @@
                         {{submission}}<div class='form-group'><button class='deleteSubmission btn btn-danger' data-aliasid="{{../_id}}" data-submissionid="{{_id}}"><b>x</b></button></div><button class='btn btn-info edit-submission'>Edit</button>
                       </span>
                         {{/each}}
-                      <button type='button' name='button' class='deleteAlias btn btn-danger puxll-right' data-id="{{_id}}" data-aliasid="{{../_id}}">Delete</button>
+                      <button type='button' name='button' class='deleteAlias btn btn-danger puxll-right' data-id={{_id}} data-aliasid="{{../_id}}">Delete</button>
                     </li>
                   </ul>
                 </form>
@@ -60,7 +60,7 @@
                 <h3>Alias</h3>
                 <!-- Alias text input -->
                 <div class='alias-email-group'>
-                 <div class='col-md-9'>
+                 <div class='col-md-9 alias-email'>
                    <input id='alias' name='name' type='text' placeholder='Stay anonymous (optional)' class='form-control input-md'>
                   </div>
                 </div>
@@ -70,23 +70,23 @@
                 <h3>Email</h3>
                 <!-- Email text input -->
                 <div class='alias-email-group'>
-                  <div class='col-md-12'>
-                    <input id='email' name='emailAddress' type='text' placeholder='Get your confession(s) emailed to you in 1 year (optional)' class='form-control input-md'>
+                  <div class='col-md-12 alias-email'>
+                    <input name='emailAddress' type='text' placeholder='Get your confession(s) emailed to you in 1 year (optional)' class='form-control input-md'>
                   </div>
                 </div>
               </div>
             </div> <!-- End of div row alias-email-forms class -->
 
             <div class='row confession'> <!-- Start of row confession -->
-              <div class='col-md-5 col-md-offset-5'>
-                <h3>Confession</h3>
+              <div class='col-md-5 col-md-offset-6' id='confessionh3'>
+                <h3 id='confession-h3'>Confession</h3>
               </div>
 
-              <div class='col-md-5 col-md-offset-3'>
+              <div class='col-md-5'>
                 <!-- Confession text input -->
                 <div class='confession-form-group'>
                   <div class='col-lg-12'>
-                    <input id='confession' name='confession' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
+                    <input name='confession' type='text' placeholder='Type in confession' class='form-control input-md' required=''>
                   </div>
                 </div> <!-- End of confession text input -->
 
