@@ -22,13 +22,13 @@
 
     <!-- Start of rendered confessions -->
     <div class='jumbotron'>
-      <div class='container'>
+      <div class='container' id='aliasList'>
         <div id='confessions'>
           <script id='confession-template' type='text/x-handlebars-template'>
             <!-- One confession -->
             <div class='row-of-confession'>
               <div class='col-md-10'>
-                <form class="form-inline" id="{{_id}}" data-alias-id="{{_id}}" >
+                <form class="form-inline" id="{{_id}}" data-alias-id="{{_id}}">
                   <ul>
                     <li class='list-group-item'>
                       <span class='alias-name'><strong>{{name}}:</strong> {{#each confessions}}

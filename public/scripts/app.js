@@ -94,6 +94,7 @@ $.ajax({
     $('#confessions').prepend(html);
   }
 
+// this function gets all the aliases on doc ready and displays them
 function getAliasesSuccess(json){
   json.forEach(function(alias){
   console.log("sanity check for app.js");
@@ -106,6 +107,7 @@ function getAliasesError(json){
       $('#confession-template').append('Failed to load aliases, is the server working?');
     }
 
+// success function for creating a new alias (alias, email, confession)
 function newAliasSuccess(alias){
   console.log('alias after POST', alias);
   renderAlias(alias);
@@ -117,6 +119,7 @@ function newAliasError(alias){
   console.log('awww-mann something went wrong!');
 }
 
+// success function for deleting a submission within an alias
 function deleteSubmissionSuccess (data) {
   var alias = json;
   var aliasId = alias._id;
@@ -134,20 +137,18 @@ function deleteSubmissionError() {
   console.log('delete submission error!');
 }
 
+// success function to delete entire Alias (alias, email, submission)
 function deletedAliasSuccess(json) {
   var alias = json;
-  console.log(json);
   var aliasId = alias._id;
-  console.log('delete alias', aliasId);
-  // find the alias with the correct ID and remove it from our allAliases array
+
   for(var index = 0; index < allAliases.length; index++) {
     if(allAliases[index]._id === aliasId) {
       allAliases.splice(index, 1);
       break;
     }
   }
-  renderAlias();
-  location.reload();
+  $('div[data-aliasid=' + aliasId + ']').remove();
 }
 
 function deletedAliasError() {

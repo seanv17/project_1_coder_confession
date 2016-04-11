@@ -73,6 +73,7 @@ function destroy(req, res) {
   var aliasId = req.params.aliasId;
 // find the index of the alias we want to delete
     db.Alias.findOneAndRemove({ _id: aliasId }, function (err, deletedAlias) {
+    console.log('deletedAlias: ', deletedAlias);
     res.json(deletedAlias);
     });
 }

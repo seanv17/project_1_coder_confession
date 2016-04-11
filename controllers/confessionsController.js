@@ -27,9 +27,6 @@ function destroy(req, res) {
     console.log('foundAlias: ', foundAlias);
     var trashedSubmission = foundAlias.confessions.id(req.params.submissionId);
     console.log('trashedSubmission: ', trashedSubmission);
-/*    if (submissionId.length === 1) {
-      return;
-    }*/
     if (trashedSubmission) {
       trashedSubmission.remove();
       // save new alias with trashed submission
