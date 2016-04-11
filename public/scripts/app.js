@@ -56,15 +56,57 @@ $.ajax({
     });
   });
 
-  // Event listener to edit submission
-  $('#confession-form').on('click', '.edit-submision', function() {
-    var editSubmissionId = $(this).data('submissionid');
-    $('#confession-form input').val('');
-    $('#confession-form text-area').val('');
-  }
+  $confessions.on('click', '.edit-submission', function(e) {
+    e.preventDefault();
+    var aliasId = $(this).data('aliasid');
+    var submissionId = $(this).data('submissionid');
+    console.log('aliasId: ', aliasId);
+    console.log('submissionId: ', submissionId);
+    var updateUrl = '/api/aliases/' + aliasId + '/confessions/submission/' + submissionId;
+    console.log('update URL : ' + updateUrl);
+
+    // when edit button is pressed.
+    // converts a submission text to an input field
+    $('.individualSubmission')
+      .html('<input class="edit-submission-text" value="' + $('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success puxll-right">Save</button>')
+
+    $('.btn-success').on('click', function() {
+      console.log(aliasId);
+      console.log(submissionId);
+      var capturedNewText = $('.edit-submission-text').val();
+
+      var updateData = {
+        aliasId : aliasId,
+        submissionId : submissionId,
+        newText :  capturedNewText
+      }
+
+      // console.log(updateData);
+      $.ajax({
+        method: 'PUT',
+        url: updateUrl,
+        data: updateData,
+        success: handleUpdateSuccess,
+        error: handleUpdateError
+      });
+
+    });
+
+  });
+
 
 // End of document ready
 });
+
+function handleUpdateSuccess(json) {
+  console.log(json);
+  $('.individualSubmission')
+    .html(json.submission);
+}
+
+function handleUpdateError(json) {
+  console.log(json);
+}
 
 // this function takes a single alias and renders it to the page
   function renderAlias(alias) {
@@ -108,7 +150,7 @@ function newAliasError(alias){
 }
 
 // success function for deleting a submission within an alias
-function deleteSubmissionSuccess (data) {
+function bmissionSuccess (data) {
   var alias = json;
   var aliasId = alias._id;
 

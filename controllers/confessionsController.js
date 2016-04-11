@@ -42,14 +42,17 @@ function destroy(req, res) {
 // Update a submission within an alias
 // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
-  var aliasId = req.params.aliasId;
-  console.log('aliasId: ', aliasId);
+  console.log(req.body);
+   var aliasId = req.body.aliasId;
+   var submissionId = req.body.submissionId;
+   var newText = req.body.newText;
 
   db.Alias.findById(aliasId, function(err, foundAlias) {
-    var correctSubmission = foundAlias.confessions.id(req.params.submissionId);
+    var correctSubmission = foundAlias.confessions.id(submissionId);
+
     if (correctSubmission) {
     // Set foundAlias submission value to submitted submission value user
-    foundAlias.submission = req.body.submission;
+    correctSubmission.submission = newText;
     // Save updated submission and set to 'savedAlias'
     foundAlias.save(function(err, savedAlias) {
       if (err) {return console.log('Save Error: ', err);} //saves the entire alis with the edited trip
