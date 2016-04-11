@@ -28,11 +28,11 @@
             <!-- One confession -->
             <div class='row-of-confession'>
               <div class='col-md-10'>
-                <form class="form-inline" id="{{_id}}" data-alias-id="{{../aliasId}}" >
+                <form class="form-inline" id="{{_id}}" data-alias-id="{{_id}}" >
                   <ul>
                     <li class='list-group-item'>
                       <span class='alias-name'><strong>{{name}}:</strong> {{#each confessions}}
-                        {{submission}}<div class='form-group'><button class='deleteSubmission btn btn-danger' data-submission-id="{{_id}}"><b>x</b></button></div><button class='btn btn-info edit-submission'>Edit</button>
+                        {{submission}}<div class='form-group'><button class='deleteSubmission btn btn-danger' data-aliasid={{../_id}} data-submissionid={{_id}}><b>x</b></button></div><button class='btn btn-info edit-submission'>Edit</button>
                       </span>
                         {{/each}}
                       <button type='button' name='button' class='deleteAlias btn btn-danger pull-right' data-id="{{_id}}">Delete</button>

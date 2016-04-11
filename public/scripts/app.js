@@ -33,11 +33,12 @@ $.ajax({
   });
 
   // Event listener for deleting a submission
-  $confessions.on('click', '.row-of-confession', function() {
-    var submissionId = $(this).data('submission-id');
-    var aliasId = $(this).closest('form').data('alias-id');
-    console.log('submissionId: ', submissionId);
+  $confessions.on('click', '.deleteSubmission', function() {
+    var aliasId = $(this).data('aliasid');
+    var submissionId = $(this).data('submissionid');
     console.log('aliasId: ', aliasId);
+    console.log('submissionId: ', submissionId);
+
    $.ajax({
      method: 'DELETE',
      url: '/api/aliases/'+ aliasId + '/confessions/submission/'+ submissionId,
@@ -117,13 +118,16 @@ function newAliasError(alias){
 }
 
 function deleteSubmissionSuccess (data) {
-  var submissionId = data._id;
-  var $formRow = $('span#' + submissionId);
-  // since aliasId isn't passed to this function, we'll deduce it from the page
-  var aliasId = $formRow.data('alias-id');
-  // remove that alias edit form from the page
-  $formRow.remove();
-  fetchandReRenderAliasWithId(aliasId);
+  var alias = json;
+  var aliasId = alias._id;
+
+  for(var index = 0; index < allAliases.length; index++) {
+    if(allAliases[index]._id === aliasId) {
+      allAliases.splice(index, 1);
+      break;
+    }
+  }
+  $('div[data-aliasid=' + aliasId + ']').remove();
 }
 
 function deleteSubmissionError() {
