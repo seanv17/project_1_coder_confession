@@ -93,7 +93,7 @@ function newAliasSuccess(alias){
   console.log('alias after POST', alias);
   $('div[data-aliasid=' + aliasId + ']').remove();
   renderAlias(alias);
-/*  $("#confession-form")[0].reset();*/
+  $("#confession-form")[0].reset();
 }
 
 function newAliasError(alias){
