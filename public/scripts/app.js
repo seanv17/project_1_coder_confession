@@ -144,7 +144,6 @@ function newAliasError(alias){
 }
 
 // success function for deleting a submission within an alias
-
 function deleteSubmissionSuccess (data) {
   var alias = json;
   var aliasId = alias._id;
