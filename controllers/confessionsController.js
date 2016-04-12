@@ -48,6 +48,7 @@ function update(req, res) {
    var newText = req.body.newText;
 
   db.Alias.findById(aliasId, function(err, foundAlias) {
+    console.log('foundAlias:', foundAlias);
     var correctSubmission = foundAlias.confessions.id(submissionId);
 
     if (correctSubmission) {
@@ -56,7 +57,7 @@ function update(req, res) {
     // Save updated submission and set to 'savedAlias'
     foundAlias.save(function(err, savedAlias) {
       if (err) {return console.log('Save Error: ', err);} //saves the entire alis with the edited trip
-      res.json(correctSubmission);
+      res.json(savedAlias);
     });
     }
   });
