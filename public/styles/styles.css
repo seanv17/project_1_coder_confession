@@ -19,12 +19,13 @@ h3 {
   margin: auto;
   font-family: 'nimrodel';
   font-size: 75px;
-
+  color: #003366;
 }
 
 legend {
 font-family: 'nimrodel';
 font-size: 85px;
+color: #C3C3E5;
 }
 
 .jumbotron  {
