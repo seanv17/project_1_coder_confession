@@ -1,13 +1,30 @@
+@font-face {
+  font-family: "nimrodel";
+  src:url('../fonts/nimrodel_fs.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 h1 {
-  color: white;
+  font-family: 'nimrodel';
+  color: #000000;
   padding: 1px;
   position: relative;
-  margin-left: 32%;
+  margin-left: 39%;
+  font-size: 200px;
 }
 
 h3 {
   position: relative;
   margin: auto;
+  font-family: 'nimrodel';
+  font-size: 75px;
+
+}
+
+legend {
+font-family: 'nimrodel';
+font-size: 85px;
 }
 
 .jumbotron  {
@@ -41,7 +58,7 @@ h3 {
 }
 
 #confessionTitle {
-  margin-left: 41%;
+  margin-left: 35%;
 }
 
 #alias {
