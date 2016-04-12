@@ -1,5 +1,5 @@
 <h1>Coder Confessions</h1>
-Coder Confessions is a loose online community where coders can safely visit to anonymously share their most fun or their most dastardly secrets. People can elect to enter an alias to track their confessions or also submit their email address so that they can receive their confessions via email in a year. Coder Confessions is also a place where people can come to read other people's confessions, whether for fun or as a sanity check to gain perspective in the struggler they're going through is not unique.
+Coder Confessions is a loose online community where coders can safely visit to anonymously share their most fun or their most dastardly secrets. People can elect to enter an alias to track their confessions or also submit their email address so that they can receive their confessions via email in a year. Coder Confessions is also a place where people can come to read other people's confessions, whether for fun or as a sanity check to gain perspective in understanding that their obstacles are not unique.
 
 When a visitor returns and enters in the same alias and email address, their submission will append to their original confession.
 
