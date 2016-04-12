@@ -7,7 +7,7 @@
 
 .jumbotron h1 {
   font-family: 'nimrodel';
-  color: white;
+  color: inherit;
   position: relative;
   margin-left: 31.5%;
   font-size: 100px;
