@@ -23,15 +23,22 @@ h3 {
 }
 
 legend {
-font-family: 'nimrodel';
-font-size: 85px;
-color: #C3C3E5;
+  font-family: 'nimrodel';
+  font-size: 85px;
+  color: #C3C3E5;
+}
+
+.btn {
+  background-color: white;
+  color: #003366;
+  border-color: #003366;
 }
 
 .jumbotron  {
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: #00001C;
+  height: 350px;
 }
 
 .container {
