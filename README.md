@@ -11,13 +11,16 @@ Visitors can only post to the website, however there is an admin endpoint where 
 <h2>Technologies Used</h2>
 - JavaScript
 - jQuery
-- Handlebars
 - Node.js
 - Express
 - Mongoose
 - Body-parser
+- HTML
 - CSS
 - Bootstrap
+- Handlebars
+- Favicon
+- Font Awesome
 
 <h2>Planned Features</h2>
 - Fix update AJAX call so that not all submissions are changed to the same edit.
@@ -26,6 +29,3 @@ Visitors can only post to the website, however there is an admin endpoint where 
 - Set confession character limit to 140 characters.
 - Add timestamp to submissions.
 - Add trending div which tracks most popular topics via hashtags
-
-
-<h2>Screenshot(s) optional</h2>
