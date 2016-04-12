@@ -29,3 +29,4 @@ Visitors can only post to the website, however there is an admin endpoint where 
 - Set confession character limit to 140 characters.
 - Add timestamp to submissions.
 - Add trending div which tracks most popular topics via hashtags
+- Add submission liking mechanism like (+1 hearts);
