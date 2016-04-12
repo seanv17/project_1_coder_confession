@@ -1,7 +1,12 @@
 <h1>Coder Confessions</h1>
-Short explanation of the project (1-2 sentences) - What is the goal of the project and/or main functionality?
+Coder Confessions is a loose online community where coders can safely visit to anonymously share their most fun or their most dastardly secrets. People can elect to enter an alias to track their confessions or also submit their email address so that they can receive their confessions via email in a year.
 
-Link to project hosted on Heroku
+When a visitor returns and enters in the same alias and email address, their submission will append to their original confession.
+
+Link to project hosted on Heroku: https://stark-shore-10560.herokuapp.com/
+Link to project hosted on Heroku as admin: https://stark-shore-10560.herokuapp.com/admin
+
+Visitors can only post to the website, however there is an admin endpoint where the admin can edit and delete submissions.
 
 <h2>Technologies Used</h2>
 - JavaScript
@@ -15,6 +20,12 @@ Link to project hosted on Heroku
 - Bootstrap
 
 <h2>Planned Features</h2>
-What changes would you make to your project if you continue working on it? (bullet points)
+- Fix update AJAX call so that not all submissions are changed to the same edit.
+- Change POST route so that if user omits an alias, a randomly generated alias is generated for them
+- Fix handlebars display for aliases with multiple confessions, list instead of current paragraph style.
+- Set confession character limit to 140 characters.
+- Add timestamp to submissions.
+- Add trending div which tracks most popular topics via hashtags
+
 
 <h2>Screenshot(s) optional</h2>

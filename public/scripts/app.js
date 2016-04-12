@@ -68,7 +68,7 @@ $.ajax({
     // when edit button is pressed.
     // converts a submission text to an input field
     $('.individualSubmission')
-      .html('<input class="edit-submission-text" value="' + $('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success puxll-right">Save</button>');
+      .html('<input class="edit-submission-text" value="' + $('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success pull-right">Save</button>');
 
     $('.btn-success').on('click', function() {
       console.log(aliasId);

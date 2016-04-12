@@ -1,12 +1,23 @@
-h3 {
+h1 {
+  color: white;
+  padding: 1px;
   position: relative;
-  margin: 0 auto;
+  margin-left: 32%;
 }
 
-.jumbotron .container {
-  height: 350px;
+h3 {
+  position: relative;
+  margin: auto;
+}
+
+.jumbotron  {
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: #00001C;
+}
+
+.container {
+  height: 350px;
   margin-bottom: 1px;
 }
 
@@ -14,9 +25,10 @@ h3 {
   margin-top: 2%;
 }
 
-.alias-email {
-  margin-left: 0px;
-  padding: 0px;
+.list-group-item {
+  margin-left: 18%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #confession {
@@ -28,6 +40,16 @@ h3 {
   margin-left: auto;
 }
 
-#confessionh3 {
-  width: 100vw;
+#confessionTitle {
+  margin-left: 41%;
+}
+
+#alias {
+  position: relative;
+  left: 0%;
+}
+
+#email {
+  position: relative;
+  margin-left: 0%;
 }
