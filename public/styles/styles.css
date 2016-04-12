@@ -5,13 +5,12 @@
   font-style: normal;
 }
 
-h1 {
+.jumbotron h1 {
   font-family: 'nimrodel';
-  color: #000000;
-  padding: 1px;
+  color: white;
   position: relative;
-  margin-left: 38%;
-  font-size: 200px;
+  margin-left: 31.5%;
+  font-size: 100px;
 }
 
 h3 {
