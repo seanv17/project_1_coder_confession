@@ -3,7 +3,7 @@ Coder Confessions is a loose online community where coders can safely visit to a
 
 When a visitor returns and enters in the same alias and email address, their submission will append to their original confession.
 
-Link to project hosted on Heroku: https://stark-shore-10560.herokuapp.com/
+Link to project hosted on Heroku: https://stark-shore-10560.herokuapp.com/<br>
 Link to project hosted on Heroku as admin: https://stark-shore-10560.herokuapp.com/admin
 
 Visitors can only post to the website, however there is an admin endpoint where the admin can edit and delete submissions.
