@@ -5,14 +5,6 @@
   font-style: normal;
 }
 
-.jumbotron h1 {
-  font-family: 'nimrodel';
-  color: inherit;
-  position: relative;
-  margin-left: 31.5%;
-  font-size: 100px;
-}
-
 h3 {
   position: relative;
   margin: auto;
@@ -32,6 +24,15 @@ img {
   padding-bottom: 20px;
 }
 
+
+.jumbotron h1 {
+  font-family: 'nimrodel';
+  color: inherit;
+  position: relative;
+  margin-left: 31.5%;
+  font-size: 100px;
+}
+s
 .btn {
   background-color: white;
   color: #003366;
@@ -71,4 +72,13 @@ img {
 
 #confessionTitle {
   margin-left: 35%;
+}
+
+#footer {
+  height: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  word-spacing: 40px;
 }
