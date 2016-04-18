@@ -56,6 +56,7 @@ $.ajax({
     });
   });
 
+  // Event listener to edit confession submission
   $confessions.on('click', '.edit-submission', function(e) {
     e.preventDefault();
     var aliasId = $(this).data('aliasid');
@@ -65,15 +66,17 @@ $.ajax({
     var updateUrl = '/api/aliases/' + aliasId + '/confessions/submission/' + submissionId;
     console.log('update URL : ' + updateUrl);
 
-    // when edit button is pressed.
+    // when edit button is pressed
     // converts a submission text to an input field
-    $('.individualSubmission')
-      .html('<input class="edit-submission-text" value="' + $('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success pull-right">Save</button>');
+    $(this).siblings(".individualSubmission")
+      .html('<input class="edit-submission-text" value="' + $(this).siblings('.individualSubmission').text() + '"></input><button type="button" name="button" class="btn btn-success pull-right">Save</button>');
 
+    // Event listener for updating changes
     $('.btn-success').on('click', function() {
-      console.log(aliasId);
-      console.log(submissionId);
+      console.log('aliasId2: ', aliasId);
+      console.log('submissionId2: ', submissionId);
       var capturedNewText = $('.edit-submission-text').val();
+      console.log('capturedNewText: ', capturedNewText);
 
       var updateData = {
         aliasId : aliasId,
@@ -81,7 +84,7 @@ $.ajax({
         newText :  capturedNewText
       };
 
-      // console.log(updateData);
+      console.log('updateData: ', updateData);
       $.ajax({
         method: 'PUT',
         url: updateUrl,
@@ -99,13 +102,14 @@ $.ajax({
 });
 
 function handleUpdateSuccess(json) {
-  console.log(json);
+  console.log('json: ', json);
+  console.log('json.confessions.submission: ', json.confessions[0].submission);
   $('.individualSubmission')
-    .html(json.submission);
+    .html(json.confessions[0].submission);
 }
 
 function handleUpdateError(json) {
-  console.log(json);
+  console.log('Whats up with this json: ', json);
 }
 
 // this function takes a single alias and renders it to the page
