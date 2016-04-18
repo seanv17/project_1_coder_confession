@@ -7,6 +7,7 @@ var $confessions;
 $(document).ready(function() {
   console.log('app.js loaded!');
 
+/* TODO: no need to use the var declaration for $confessions (it's declared above at line 5) -jc */
   var $confessions = $('#confessions');
   var $confessionform = $('#confession-form');
 
@@ -41,8 +42,10 @@ $.ajax({
 
    $.ajax({
      method: 'DELETE',
+     /* TODO: build the url external to the ajax call to make reading code easier -jc */
      url: '/api/aliases/'+ aliasId + '/confessions/submission/'+ submissionId,
      success: deleteSubmissionSuccess
+     /* TODO: always include an error handler -jc */
    });
   });
 
@@ -50,12 +53,14 @@ $.ajax({
   $confessions.on('click', '.deleteAlias', function() {
     $.ajax({
       method: 'DELETE',
+      /* TODO: build the url external to the ajax call to make reading code easier -jc */
       url: '/api/aliases/'+$(this).attr('data-id'),
       success: deletedAliasSuccess,
       error: deletedAliasError
     });
   });
 
+  /* TODO: fix that weird click one clicks all bug lol -jc */
   $confessions.on('click', '.edit-submission', function(e) {
     e.preventDefault();
     var aliasId = $(this).data('aliasid');
@@ -102,6 +107,7 @@ function handleUpdateSuccess(json) {
   console.log(json);
   $('.individualSubmission')
     .html(json.submission);
+    /* TODO: remove the save button after the udpate has been saved -jc */
 }
 
 function handleUpdateError(json) {
@@ -127,6 +133,7 @@ function getAliasesSuccess(json){
 
 function getAliasesError(json){
   console.log('uh ohhhhhhh');
+  /* TODO: generally you don't want the user to see your errors unless it is directly their fault. This is not good to have on the production version. console.log the error and let the developers only see it. -jc */
       $('#confession-template').append('Failed to load aliases, is the server working?');
     }
 
@@ -141,6 +148,7 @@ function newAliasSuccess(alias){
 
 function newAliasError(alias){
   console.log('awww-mann something went wrong!');
+  /* TODO: always console.log your errors -jc */
 }
 
 // success function for deleting a submission within an alias
@@ -159,6 +167,8 @@ function deleteSubmissionSuccess (data) {
 
 function deleteSubmissionError() {
   console.log('delete submission error!');
+  /* TODO: always console.log your errors -jc */
+
 }
 
 // success function to delete entire Alias (alias, email, submission)
@@ -177,4 +187,6 @@ $('li[data-id=' + aliasId + ']').remove();
 
 function deletedAliasError() {
   console.log('delete alias error!');
+  /* TODO: always console.log your errors -jc */
+
 }

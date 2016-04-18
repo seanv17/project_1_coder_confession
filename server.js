@@ -41,6 +41,7 @@ app.get('/admin', function homepage (req, res) {
  app.delete('/api/aliases/:aliasId/', controllers.aliases.destroy);
 
  // Confession endpoints
+ /* TODO: To make these routes more 'RESTful', reduce them to `api/aliases/:aliasId/confessions/:confessionId` -jc */
  app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
  app.delete('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.destroy);
 

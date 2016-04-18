@@ -46,6 +46,8 @@ function create(req, res) {
       // Set alias Id as a variable and set to foundAlias variable
       var aliasId = found[0]._id;
       console.log('aliasId: ', aliasId);
+      /* TODO: for embedded schemas you generally don't have to execute db functions using the populate and exec chain methods, but hey, it works! -jc */
+
       db.Alias.findById(aliasId)
       .populate('confession')
       .exec(function (err, foundAlias) {
@@ -63,7 +65,8 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  // FILL ME IN !
+  /* TODO: it'd be nice to have a feature where a user can click on an alias and see all of the confessions by that single alias -jc */
+
 }
 
 // Delete entire alias (alias name, emailAddress, confession)
