@@ -60,11 +60,8 @@ $.ajax({
     });
   });
 
-<<<<<<< HEAD
   // Event listener to edit confession submission
-=======
   /* TODO: fix that weird click one clicks all bug lol -jc */
->>>>>>> 1f12c42164ca971e1aafa53060d20b24cc7b11e3
   $confessions.on('click', '.edit-submission', function(e) {
     e.preventDefault();
     var aliasId = $(this).data('aliasid');
@@ -113,12 +110,8 @@ function handleUpdateSuccess(json) {
   console.log('json: ', json);
   console.log('json.confessions.submission: ', json.confessions[0].submission);
   $('.individualSubmission')
-<<<<<<< HEAD
     .html(json.confessions[0].submission);
-=======
-    .html(json.submission);
     /* TODO: remove the save button after the udpate has been saved -jc */
->>>>>>> 1f12c42164ca971e1aafa53060d20b24cc7b11e3
 }
 
 function handleUpdateError(json) {
