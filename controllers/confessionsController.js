@@ -23,6 +23,7 @@ function show(req, res) {
 function destroy(req, res) {
   var aliasId = req.params.aliasId;
   var submissionId = req.params.submissionId;
+
   db.Alias.findById(aliasId, function(err, foundAlias) {
     console.log('foundAlias: ', foundAlias);
     var trashedSubmission = foundAlias.confessions.id(req.params.submissionId);
@@ -30,12 +31,13 @@ function destroy(req, res) {
     if (trashedSubmission) {
       trashedSubmission.remove();
       // save new alias with trashed submission
-    foundAlias.save(function(err, saved) {
-      console.log('Deleted ', trashedSubmission.name, 'from', saved.submission);
-      res.json(trashedSubmission);
-    });
+      foundAlias.save(function(err, saved) {
+        console.log('Deleted ', trashedSubmission.name, 'from', saved.submission);
+        res.json(trashedSubmission);
+      });
+    } else {
+      res.send(404);
     }
-   else {res.send(404);}
   });
 }
 
@@ -43,22 +45,24 @@ function destroy(req, res) {
 // app.put('/api/aliases/:aliasId/confessions/submission/:submissionId', controllers.confessions.update);
 function update(req, res) {
   console.log(req.body);
-   var aliasId = req.body.aliasId;
-   var submissionId = req.body.submissionId;
-   var newText = req.body.newText;
+  var aliasId = req.body.aliasId;
+  var submissionId = req.body.submissionId;
+  var newText = req.body.newText;
 
   db.Alias.findById(aliasId, function(err, foundAlias) {
     console.log('foundAlias:', foundAlias);
     var correctSubmission = foundAlias.confessions.id(submissionId);
 
     if (correctSubmission) {
-    // Set foundAlias submission value to submitted submission value user
-    correctSubmission.submission = newText;
-    // Save updated submission and set to 'savedAlias'
-    foundAlias.save(function(err, savedAlias) {
-      if (err) {return console.log('Save Error: ', err);} //saves the entire alis with the edited trip
-      res.json(savedAlias);
-    });
+      // Set foundAlias submission value to submitted submission value user
+      correctSubmission.submission = newText;
+      // Save updated submission and set to 'savedAlias'
+      foundAlias.save(function(err, savedAlias) {
+        if (err) {
+          return console.log('Save Error: ', err);
+        } //saves the entire alis with the edited trip
+        res.json(savedAlias);
+      });
     }
   });
 }

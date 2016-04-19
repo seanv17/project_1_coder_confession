@@ -41,6 +41,7 @@
                     <ul>
                       <li class='list-group-item' data-id="{{_id}}">
                         <span class='alias-name'><strong>{{name}}:</strong> {{#each confessions}}
+                          <!-- TODO: you're creating multiple closing span tags with only one single opening span tag. fix this. -jc -->
                           {{submission}}
                         </span>
                         {{/each}}
@@ -107,6 +108,7 @@
                   </div> <!-- End of row confession -->
                 </fieldset>
               <hr>
+              <!-- TODO: font awesome, nice touch! -jc -->
             <div='footer'><i class='fa fa-copyright'></i> Copyright 2016 <i class='fa fa-twitter'></i>: <a href='https://twitter.com/seanvanho' target='_blank' /> SeanVanHo</a> <i class='fa fa-github'></i>: <a href='https://github.com/seanvsville' target='_blank' />seanvsville</a></div>
           </section>
         </form>
