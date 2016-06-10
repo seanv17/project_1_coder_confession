@@ -24,12 +24,15 @@ img {
   padding-bottom: 20px;
 }
 
-.jumbotron h1 {
+.jumbotron {
+  text-align: center;
+}
+
+h1 {
   font-family: 'nimrodel';
   color: inherit;
-  position: relative;
-  margin-left: 31.5%;
   font-size: 100px;
+  display: inline-block;
 }
 
 .btn {
